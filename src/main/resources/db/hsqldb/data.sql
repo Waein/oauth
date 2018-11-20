@@ -12,6 +12,6 @@ INSERT INTO nursery VALUES ('9', '1', 'Python开发培训中心', 'Jon', 'Python
 INSERT INTO nursery VALUES ('10', '1', 'DB运维培训中心', 'Ben', 'DB培训', '2015-08-26');
 INSERT INTO nursery VALUES ('11', '1', '服务器运维培训中心', 'Kelth', '服务器培训', '2014-08-13');
 
-INSERT INTO user VALUES ('1', 'shawn', 'fucksecurity');
+INSERT INTO user VALUES ('1', 'waein', 'waeinsecurity');
 
 commit;

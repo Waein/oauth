@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.waein.safety.repository.NurseryRepository">
+<mapper namespace="com.waein.oauth.repository.NurseryRepository">
 
     <resultMap id="nursery" type="Nursery">
         <id property="id" column="id"/>
@@ -18,7 +18,7 @@
         <result property="acronym" column="acronym"/>
         <result property="createTime" column="create_time"/>
         <result property="associationId" column="association_id"/>
-        <association property="association" javaType="Association" resultMap="com.waein.safety.repository.NurseryRepository.association" columnPrefix="association_"/>
+        <association property="association" javaType="Association" resultMap="com.waein.oauth.repository.NurseryRepository.association" columnPrefix="association_"/>
     </resultMap>
 
     <insert id="insertNursery" useGeneratedKeys="true" keyProperty="id">
