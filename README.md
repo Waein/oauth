@@ -1,9 +1,6 @@
-# SpringBoot-MyBatis
+# Spring boot + oauth2
 
-最近由于实训，发现很多同学都在开发 Java 后台，因此少不了重复繁杂的配置工作，这个框架就是为了减少这些不必要的工作。它集成了 **Spring Boot** 和 **MyBatis**（后期我又集成了 **Spring Security OAuth** 以支持 OAuth 2.0），并实现了一个类似“书籍管理”的模块（支持 **RESTful API**）以供参考，框架简单易懂。完全可以根据自己的需要，修改这个框架，以实现自己想实现的功能。
-
-- [中文文档](README.md)
-- [English documents](README-en.md)
+**Spring boot** 框架就是为了减少不必要的配置工作。(本项目又集成了 **Spring Security OAuth** 以支持 OAuth 2.0），并实现了一个类似“协会管理”的模块（支持 **RESTful API**）以供参考，框架简单易懂。完全可以根据自己的需要，修改这个框架，以实现自己想实现的功能。
 
 ## 向导
 
@@ -27,11 +24,11 @@
 首先，你应该要将这个代码库克隆到你的磁盘上，并进入此目录。启动命令行窗口，键入：
 
 ```
-git clone https://github.com/ShawnyXiao/SpringBoot-MyBatis.git
-cd SpringBoot-MyBatis
+git clone https://github.com/Waein/oauth.git
+cd oauth 
 ```
 
-然后，启动应用（初次启动的话，这个过程会需要稍微久一点的时间）。在命令行窗口中键入：
+然后，启动应用（初次启动的话，这个过程会需要稍微久一点的时间,大概几秒钟）。在命令行窗口中键入：
 
 ```
 mvn spring-boot:run
@@ -40,20 +37,19 @@ mvn spring-boot:run
 此时，你可以尝试发出一个 HTTP 请求。例如，利用浏览器向你的 Web 应用发出一个 HTTP GET 请求，在地址栏键入：
 
 ```
-http://localhost:8080/books/1
+http://localhost:8888/nurserys/2
 ```
 
 你将会看到，你的 Web 应用通过 JSON 字符串来做出响应：
 
 ```json
 {
-  "id": 1,
-  "name": "社会研究方法教程",
-  "author": "袁方",
-  "price": 68,
-  "topic": "社会学",
-  "publishDate": 1425139200000,
-  "bookStoreId": 1
+	"id": 2,
+	"name": "医学博士培训中心",
+	"leader": "高德纳",
+	"acronym": "医学培训",
+	"createTime": 1392220800000,
+	"associationId": 1
 }
 ```
 
@@ -80,44 +76,42 @@ http://localhost:8080/books/1
 `-- src
 	|-- main
 	|	|-- java
-	|	|	`-- com
-	|	|		`-- shawn
-	|	|			|-- constant
-	|	|			|-- model
-	|	|			|	|-- dto
-	|	|			|	`-- entity
-	|	|			|-- monitor
-	|	|			|-- repository
-	|	|			|	`-- mybatis
-	|	|			|-- service
-	|	|			|	`-- impl
-	|	|			|-- security
-	|	|			|-- util
-	|	|			`-- web
-	|	|				|-- controller
-	|	|				|-- excetpion
-	|	|				`-- filter
+	|	|	 `-- com
+	|	|		  `-- waein 
+	|	|		    `-- oauth            
+	|	|			       |-- constant
+	|	|			       |-- model
+	|	|			       |	  |-- dto
+	|	|			       |	  `-- entity
+	|	|			       |-- monitor
+	|	|			       |-- repository
+	|	|			       |-- service
+	|	|			       |	  `-- impl
+	|	|			       |-- security
+	|	|			       |-- util
+	|	|			       `-- web
+	|	|				          |-- controller
+	|	|				          |-- excetpion
+	|	|				          `-- filter
 	|	`-- resources
-	|		|-- com
-	|		|	`-- shawn
-	|		|		`-- repository
-	|		|			`-- mybatis
-	|		`-- db
-	|			`-- hsqldb
+	|		   |--db 
+	|		   |-- mapper 
+	|		   `-- application.tml 
+	|	
 	`-- test
 		`-- ...(& so on)
 ```
 
-- ```src/main/java/com/shawn/constant```: 该目录放置了各种常量类
-- ```src/main/java/com/shawn/model```: 该目录放置了各种模型类，其子目录 dto 放置了 DTO（Data Trasfer Object）类，其另一子目录 entity 放置了实体类
-- ```src/main/java/com/shawn/monitor```: 该目录放置了各种监测类
-- ```src/main/java/com/shawn/repository```: 该目录放置了数据库增删改查的接口，其子目录 impl 放置了这些接口的实现类
-- ```src/main/java/com/shawn/service```: 该目录下放置服务（一个服务对应于一些业务逻辑的集合）的接口，其子目录 impl 放置了这些接口的实现类
-- ```src/main/java/com/shawn/security```: 该目录放置了 Spring Security OAuth 的相关配置
-- ```src/main/java/com/shawn/util```: 该目录放置了各种工具类
-- ```src/main/java/com/shawn/web```: 该目录放置了和网络层相关的一切，包括控制器、异常处理、过滤器等等
-- ```src/main/resources/com/shawn/repository/mybatis```: 该目录放置了 MyBatis 的映射器 XML 文件
+- ```src/main/java/com/waein/oauth/constant```: 该目录放置了各种常量类
+- ```src/main/java/com/waein/oauth/model```: 该目录放置了各种模型类，其子目录 dto 放置了 DTO（Data Trasfer Object）类，其另一子目录 entity 放置了实体类
+- ```src/main/java/com/waein/oauth/monitor```: 该目录放置了各种监测类
+- ```src/main/java/com/waein/oauth/repository```: 该目录放置了数据库增删改查的接口
+- ```src/main/java/com/waein/oauth/service```: 该目录下放置服务（一个服务对应于一些业务逻辑的集合）的接口，其子目录 impl 放置了这些接口的实现类
+- ```src/main/java/com/waein/oauth/security```: 该目录放置了 Spring Security OAuth 的相关配置
+- ```src/main/java/com/waein/oauth/util```: 该目录放置了各种工具类
+- ```src/main/java/com/waein/oauth/web```: 该目录放置了和网络层相关的一切，包括控制器、异常处理、过滤器等等
 - ```src/main/resources/db```: 该目录放置了有关内存数据库的脚本，其子目录 hsqldb 放置了 HSQL 的数据库脚本
+- ```src/main/resources/mapper```: 该目录放置了 MyBatis 的映射器 XML 文件
 
 ### 架构
 
@@ -136,7 +130,7 @@ http://localhost:8080/books/1
 ![Three Layer architecture](pic/three_layer.png)
 
 - **Web层**：Web 应用的最顶层。它负责处理用户输入以及返回正确的相应给用户；处理其他层抛出的异常并向用户反映错误的发生；对用户进行认证，拒绝未认证的用户访问。
-- **Service层**：Web 应用的中间层。它应该组织业务逻辑，为 Web 层提供服务；使得所有服务都是事务性的（要么完成，要么什么都没做）；负责用户的授权。
+- **Service层**：Web 应用的中间层。它应该组织业务逻辑，为 Web 层提供服务；使得所有服务都是事务性的（要么完成，要么什么都没做）；oauth负责用户的授权。
 - **Repository层**：Web 应用的最底层。它负责操纵数据库，以实现对数据库的增删改查。
 
 那么，这三层的组件要如何交互呢？最佳实践是：**上层组件使用下层组件，使用模型（Model）作为交互媒介**。模型包括两种：数据传输对象（DTO）和领域模型（Domain Model）。
@@ -151,13 +145,13 @@ http://localhost:8080/books/1
 不使用 Lombok：
 
 ```java
-public class BookStore {
+public class Association {
 
     private long id;
     private String name;
     private String address;
 
-    public BookStore() {
+    public Association() {
     }
 
     public long getId() {
@@ -190,7 +184,7 @@ public class BookStore {
 }
 ```
 
-使用 Lombok：
+使用 Lombok注解：
 
 ```java
 import lombok.Getter;
@@ -202,7 +196,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Getter
 @Setter
-public class BookStore {
+public class Association {
 
     private long id;
     private String name;
@@ -222,7 +216,7 @@ public class BookStore {
 
 ### 日志记录
 
-曾经，我一直使用控制台输出（也就是 ```System.out.println```）来让我的程序告诉我它在编译期和运行期做了些什么。这样的确是简单，但是往往伴随着显著的劣势。举两个例子：
+曾经，我一直使用控制台输出（也就是```System.out.println```）来让我的程序告诉我它在编译期和运行期做了些什么。这样的确是简单，但是往往伴随着显著的劣势。举两个例子：
 
 - 在开发环境中，我想看到调试的信息，但在生产环境中，我并不想看到任何调试信息
 - 我想将所有信息输出到一个文件，以便我有空了就打开这个文件，看下哪里出错了
@@ -244,8 +238,8 @@ public class XxxClass {
 这段代码会产生怎样的效果呢？效果如下：
 
 ```
-2017-01-01 13:35:52.698  INFO 13184 --- [nio-8080-exec-1] com.shawn.xxx.XxxClass                   : This is an info log.
-2017-01-01 13:35:52.738 ERROR 13184 --- [nio-8080-exec-1] com.shawn.xxx.XxxClass                   : This is an error log.
+2018-11-19 13:35:52.698  INFO 13184 --- [nio-8888-exec-1] com.waein.oauth.xxx.XxxClass                   : This is an info log.
+2018-11-19 13:35:52.738 ERROR 13184 --- [nio-8888-exec-1] com.waein.oauth.xxx.XxxClass                   : This is an error log.
 ```
 
 本项目对日志记录的有效配置全部位于 ```src/main/resources/application.properties``` 下，包括日志级别的配置、输出到日志文件的配置等等，如下：
@@ -253,16 +247,15 @@ public class XxxClass {
 ```
 ...
 
-### Logging ###
-# Log levels (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
-logging.level.root=INFO
-logging.level.org.springframework=INFO
-logging.level.org.springframework.web=INFO
-logging.level.org.mybatis=INFO
-logging.level.com.shawn=DEBUG
-# File output
-project.name=SpringBoot-Mybatis
-logging.file=/${project.name}/logs/SpringBoot-Mybatis.log
+### Logging ### Log levels (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+logging:
+  level: INFO
+    org:
+      springframework: INFO
+        web: INFO
+      mybatis: INFO
+# File output 上线需要配置服务器日志路径 /data/oauth/logs/oauth.log
+file: /Users/SeungRi/opt/logs/oauth.log
 
 ...
 ```
@@ -274,7 +267,7 @@ logging.file=/${project.name}/logs/SpringBoot-Mybatis.log
 
 ### 性能监控
 
-大概5个月之前，我参与的一个项目中存在了一个严重的性能问题，但是在开发和测试过程中并没有人发现这个问题，而是系统上线后，客户发现并提出，导致这个性能问题造成了严重的后果。因此，非常有必要对开发、测试以及上线的系统进行**性能监控**，及时做出补救措施，以造成不必要的后果。
+ 之前公司的一个项目中存在了一个严重的性能问题，但是在开发和测试过程中并没有人发现这个问题，而是系统上线后，客户发现并提出，导致这个性能问题造成了严重的后果。因此，非常有必要对开发、测试以及上线的系统进行**性能监控**，及时做出补救措施，以造成不必要的后果。
 
 那么，我们到底应该监控什么呢，或者说性能到底是什么呢？对于 Web 应用来说，性能就是 Web 系统采取某个动作（动作也就是 Web 系统对每个请求所执行的操作的集合）所消耗的时间。了解到我们应该监控 Web 系统的每个动作，那么更进一步，怎么才能监控每个动作呢？本项目采用的是 **Spring AOP** 技术。三个步骤如下：
 
@@ -299,7 +292,7 @@ private void monitorXxxMethod() {} // 切入点签名
 @Around（"monitorXxxMethod"） // 使用了第二点中申明的切入点
 public Object doSomething（ProceedingJoinPoint pjp） throws Throwable {
     // 在方法执行前，做某些操作
-    Object retVal = pjp.proceed（）;
+    Object retVal = pjp.proceed();
     // 在方法执行后，做某些操作
     return retVal;
 }
@@ -319,7 +312,7 @@ public class PerformanceMonitor {
      * com.shawn.service package or any sub-package under that
      * and modified by public.
      */
-    @Pointcut("execution(public * com.shawn.web.controller..*(..))")
+    @Pointcut(oauth
     private void controllerLayer() {
     }
 
@@ -357,10 +350,10 @@ public class PerformanceMonitor {
 因此，系统每执行一个动作（也就是，每响应一个请求所执行的操作），在日志上都会记录下它所消耗的时间，若超过1秒，则会以 ```error``` 级别记录日志。如下：
 
 ```
-2017-01-03 22:58:19.431 ERROR 6384 --- [nio-8080-exec-9] com.shawn.monitor.PerformanceMonitor     : [BookController.postBook(..)][Elapsed time: 1.457 s][Note that it's time consuming!]
-2017-01-03 22:58:47.875  INFO 6384 --- [io-8080-exec-10] com.shawn.monitor.PerformanceMonitor     : [BookController.getBooks(..)][Elapsed time: 0.656 s]
-2017-01-03 22:59:16.356  INFO 6384 --- [nio-8080-exec-1] com.shawn.monitor.PerformanceMonitor     : [BookController.putBook(..)][Elapsed time: 0.618 s]
-2017-01-03 22:59:51.259  INFO 6384 --- [nio-8080-exec-3] com.shawn.monitor.PerformanceMonitor     : [BookController.deleteBook(..)][Elapsed time: 0.016 s]
+2018-11-19 22:58:19.431 ERROR 6384 --- [nio-8888-exec-9] com.waein.oauth.monitor.PerformanceMonitor     : [NurseryController.postNursery(..)][Elapsed time: 1.457 s][Note that it's time consuming!]
+2018-11-19 22:58:47.875  INFO 6384 --- [io-8888-exec-10] com.waein.oauth.monitor.PerformanceMonitor     : [NurseryController.getNurserys(..)][Elapsed time: 0.656 s]
+2018-11-19 22:59:16.356  INFO 6384 --- [nio-8888-exec-1] com.waein.oauth.monitor.PerformanceMonitor     : [NurseryController.putNursery(..)][Elapsed time: 0.618 s]
+2018-11-19 22:59:51.259  INFO 6384 --- [nio-8888-exec-3] com.waein.oauth.monitor.PerformanceMonitor     : [NurseryController.deleteNursery(..)][Elapsed time: 0.016 s]
 ```
 
 ### OAuth 2.0
@@ -377,17 +370,17 @@ OAuth 2.0 有4种授权方式，分别是：授权码模式（authorization code
 
 既然清楚了运行流程，那么接下来要进行的是对 Spring Security OAuth 的配置，涉及到这些的类有：
 
-- ```com.shawn.model.dto.CustomUserDetails```: 该类是一个模型类，实现了 ```UserDetails``` 接口。它主要负责传送用户的认证信息，包括：用户名, 密码, 该用户所拥有的权限等等
-- ```com.shawn.security.AuthorizationServerConfiguration```: 该类是一个配置类，继承了 ```AuthorizationServerConfigurerAdapter```。它主要负责授权服务器的配置，包括：信任的客户端信息的管理、请求令牌的 URL 的配置、 令牌的管理、如何认证用户的配置、对于请求令牌的 URL 的安全约束的配置等等
-- ```com.shawn.security.ResourceServerConfiguration```: 该类是一个配置类，继承了 ```ResourceServerConfigurerAdapter```。他主要负责资源服务器的配置，包括：对于请求资源的 URL 的安全约束的配置等等
-- ```com.shawn.security.WebSecurityConfiguration```: 该类是一个配置类，继承了 ```GlobalAuthenticationConfigurerAdapter```。它主要负责有关认证的配置，包括：用户的认证信息的获取等等
-- ```com.shawn.service.UserService```: 该类是一个服务类的接口，继承了 ```UserDetailsService``` 接口
-- ```com.shawn.service.impl.UserServiceImpl```: 该类是 ```UserService``` 接口的实现类
+- ```com.waein.oauth.model.dto.CustomUserDetails```: 该类是一个模型类，实现了 ```UserDetails``` 接口。它主要负责传送用户的认证信息，包括：用户名, 密码, 该用户所拥有的权限等等
+- ```com.waein.oauth.security.AuthorizationServerConfiguration```: 该类是一个配置类，继承了 ```AuthorizationServerConfigurerAdapter```。它主要负责授权服务器的配置，包括：信任的客户端信息的管理、请求令牌的 URL 的配置、 令牌的管理、如何认证用户的配置、对于请求令牌的 URL 的安全约束的配置等等
+- ```com.waein.oauth.security.ResourceServerConfiguration```: 该类是一个配置类，继承了 ```ResourceServerConfigurerAdapter```。他主要负责资源服务器的配置，包括：对于请求资源的 URL 的安全约束的配置等等
+- ```com.waein.oauth.security.WebSecurityConfiguration```: 该类是一个配置类，继承了 ```GlobalAuthenticationConfigurerAdapter```。它主要负责有关认证的配置，包括：用户的认证信息的获取等等
+- ```com.waein.oauth.service.UserService```: 该类是一个服务类的接口，继承了 ```UserDetailsService``` 接口
+- ```com.waein.oauth.service.impl.UserServiceImpl```: 该类是 ```UserService``` 接口的实现类
 
 有了这些配置，我们实现的效果是：
 
-- 获取 book 资源（查）的请求一律不需要认证
-- 对 book 资源进行修改的请求（增删改）需要认证
+- 获取 nursery 资源（查）的请求一律不需要认证
+- 对 nursery 资源进行修改的请求（增删改）需要认证
 - 对 user 资源的所有请求（增删改查）都需要认证
 
 #### 使用途径
@@ -395,27 +388,26 @@ OAuth 2.0 有4种授权方式，分别是：授权码模式（authorization code
 首先，我们尝试访问不需要认证的资源：
 
 ```
-curl http://localhost:8080/books/1
+curl http://localhost:8888/nurserys/2
 ```
 
-正如我们所期待的，服务器返回了 ID 为 1 的 book 资源给客户端，如下：
+正如我们所期待的，服务器返回了 ID 为 2 的 nursery 资源给客户端，如下：
 
 ```json
 {
-  "id": 1,
-  "name": "社会研究方法教程",
-  "author": "袁方",
-  "price": 68.0,
-  "topic": "社会学",
-  "publishDate": 1425139200000,
-  "bookStoreId": 1
+	"id": 2,
+	"name": "医学博士培训中心",
+	"leader": "高德纳",
+	"acronym": "医学培训",
+	"createTime": 1392220800000,
+	"associationId": 1
 }
 ```
 
-接下来，我们尝试不带认证信息的访问需要认证的资源（尝试删除 ID 为 1 的 book）：
+接下来，我们尝试不带认证信息的访问需要认证的资源（尝试删除 ID 为 1 的 nursery）：
 
 ```
-curl http://localhost:8080/books/1 -X DELETE
+curl http://localhost:8888/nurserys/1 -X DELETE
 ```
 
 我们收到如下的 JSON 字符串响应，告诉我们需要认证了才能访问这个资源：
@@ -430,7 +422,7 @@ curl http://localhost:8080/books/1 -X DELETE
 为了访问受保护的资源，我们需要先向授权服务器请求访问令牌（access token）：
 
 ```
-curl http://localhost:8080/oauth/token -X POST -u client:fucksecurity -d "grant_type=password&username=shawn&password=fucksecurity"
+curl http://localhost:8888/oauth/token -X POST -u client:waeinsecurity -d "grant_type=password&username=waein&password=wjwsecurity"
 ```
 
 授权服务器验证了我们的客户端和用户信息，验证成功后将我们需要的令牌（token）信息作为响应传回：
@@ -448,13 +440,13 @@ curl http://localhost:8080/oauth/token -X POST -u client:fucksecurity -d "grant_
 接下来，我们可以使用上个请求返回的 ```access_token```，操作受保护的资源：
 
 ```
-curl http://localhost:8080/books/1 -X DELETE -H "Authorization: Bearer ca741611-a30e-4504-b84e-fdf9cec0da9a"
+curl http://localhost:8888/nurserys/1 -X DELETE -H "Authorization: Bearer ca741611-a30e-4504-b84e-fdf9cec0da9a"
 ```
 
-响应成功返回，为了验证 ID 为 1 的 book 确实被删除，我们尝试获取 ID 为 1 的 book 信息：
+响应成功返回，为了验证 ID 为 1 的 nursery 确实被删除，我们尝试获取 ID 为 1 的 nursery 信息：
 
 ```
-curl http://localhost:8080/books/1
+curl http://localhost:8888/nurserys/1
 ```
 
 响应的 HTTP 状态码为 404，并传回了以下 JSON 字符串，这说明 ID 为 1 的 book 确实已经被删除：
@@ -462,14 +454,14 @@ curl http://localhost:8080/books/1
 ```json
 {
   "code": 1003,
-  "message": "Book with id 1 is not found."
+  "message": "Nursery with id 1 is not found."
 }
 ```
 
-最后，随着时间（在本项目中是 43199 秒）的消逝，```access_token``` 会过期。可以使用曾经请求访问令牌时返回的 ```refresh_token``` 来获取一个新的 ```access_token```：
+最后，随着时间（在本项目中是 43099 秒）的消逝，```access_token``` 会过期。可以使用曾经请求访问令牌时返回的 ```refresh_token``` 来获取一个新的 ```access_token```：
 
 ```
-curl http://localhost:8080/oauth/token -X POST -u client:fucksecurity -d "grant_type=refresh_token&refresh_token=1a1fb46e-8ab4-4a3b-84c4-e70892eaa570"
+curl http://localhost:8888/oauth/token -X POST -u client:waeinsecurity -d "grant_type=refresh_token&refresh_token=1a1fb46e-8ab4-4a3b-84c4-e70892eaa570"
 ```
 
 ### Lambda 表达式
@@ -574,15 +566,15 @@ a -> {System.out.println(a);}
 ```java
 ...
 
-@GetMapping("/{bookId}")
-public ResponseEntity<?> getBookById(@PathVariable Long bookId) {
-    return bookService
-            .getBookById(bookId)
-            .map(ResponseEntity::ok)
-            .orElseThrow(() -> new ResourceNotFoundException()
-                    .setResourceName(ResourceNameConstant.BOOK)
-                    .setId(bookId));
-}
+@GetMapping("/{nurseryId}")
+    public ResponseEntity<?> getNurseryById(@PathVariable Long nurseryId) {
+        return nurseryService
+                .getNurseryById(nurseryId)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new ResourceNotFoundException()
+                        .setResourceName(ResourceNameConstant.NURSERY)
+                        .setId(nurseryId));
+    }
 
 ...
 ```

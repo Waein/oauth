@@ -1,18 +1,17 @@
-DROP TABLE book IF EXISTS;
-DROP TABLE book_store IF EXISTS;
+DROP TABLE nursery IF EXISTS;
+DROP TABLE association IF EXISTS;
 DROP TABLE user IF EXISTS;
 
-CREATE TABLE book (
+CREATE TABLE nursery (
   id            BIGINT IDENTITY PRIMARY KEY,
-  book_store_id BIGINT,
+  association_id BIGINT,
   name          VARCHAR(80),
-  author        VARCHAR(80),
-  price         DECIMAL(10,2),
-  topic         VARCHAR(80),
-  publish_date  DATE
+  leader        VARCHAR(80),
+  acronym         VARCHAR(80),
+  create_time  DATE
 );
 
-CREATE TABLE book_store (
+CREATE TABLE association (
   id           BIGINT IDENTITY PRIMARY KEY,
   name         VARCHAR(80),
   address      VARCHAR(80)

@@ -1,16 +1,16 @@
-INSERT INTO book_store VALUES ('1', '新华书店', '湖北省武汉市洪山区文秀街131号');
+INSERT INTO association VALUES ('1', '西港人才培训协会', '杭州市西湖区三墩街道西港新界西区B座1403号');
 
-INSERT INTO book VALUES ('1', '1', '社会研究方法教程', '袁方', '68.00', '社会学', '2015-03-01');
-INSERT INTO book VALUES ('2', '1', '算法', '高德纳', '108.00', '数据结构', '2014-02-13');
-INSERT INTO book VALUES ('3', '1', 'Java核心技术Ⅰ', 'Cay', '93.00', '编程语言', '2011-06-14');
-INSERT INTO book VALUES ('4', '1', '现代操作系统', 'William', '56.50', '操作系统', '2016-08-23');
-INSERT INTO book VALUES ('5', '1', 'Head First设计模式', 'Freeman', '32.00', '设计模式', '2013-10-15');
-INSERT INTO book VALUES ('6', '1', '学习OpenCV', 'Bradski', '46.00', '技术', '2014-02-13');
-INSERT INTO book VALUES ('7', '1', '小王子', '周克希', '15.00', '文学', '2008-07-13');
-INSERT INTO book VALUES ('8', '1', 'Effective Java', 'Bloch', '38.00', '编程语言', '2014-12-03');
-INSERT INTO book VALUES ('9', '1', '编程珠玑', 'Jon', '36.00', '数据结构', '2013-12-03');
-INSERT INTO book VALUES ('10', '1', 'SQL必知必会', 'Ben', '13.00', '数据库', '2015-08-26');
-INSERT INTO book VALUES ('11', '1', '编译器设计', 'Kelth', '59.00', '编译器', '2014-08-13');
+INSERT INTO nursery VALUES ('1', '1', '社会人员培训中心', '袁方', '社会培训', '2015-03-01');
+INSERT INTO nursery VALUES ('2', '1', '医学博士培训中心', '高德纳', '医学培训', '2014-02-13');
+INSERT INTO nursery VALUES ('3', '1', 'Java开发培训中心', 'Cay', 'Java培训', '2011-06-14');
+INSERT INTO nursery VALUES ('4', '1', 'Linux培训中心', 'William', 'Linux培训', '2016-08-23');
+INSERT INTO nursery VALUES ('5', '1', 'C语言培训中心', 'Freeman', 'C培训', '2013-10-15');
+INSERT INTO nursery VALUES ('6', '1', 'C#培训中心', 'Bradski', 'C#培训', '2014-02-13');
+INSERT INTO nursery VALUES ('7', '1', '大数据培训中心', '周克希', '大数据培训', '2008-07-13');
+INSERT INTO nursery VALUES ('8', '1', 'AI智能人工培训中心', 'Bloch', 'AI培训', '2014-12-03');
+INSERT INTO nursery VALUES ('9', '1', 'Python开发培训中心', 'Jon', 'Python培训', '2013-12-03');
+INSERT INTO nursery VALUES ('10', '1', 'DB运维培训中心', 'Ben', 'DB培训', '2015-08-26');
+INSERT INTO nursery VALUES ('11', '1', '服务器运维培训中心', 'Kelth', '服务器培训', '2014-08-13');
 
 INSERT INTO user VALUES ('1', 'shawn', 'fucksecurity');
 

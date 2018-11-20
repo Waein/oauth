@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.waein.safety.repository.NurseryRepository">
+
+    <resultMap id="nursery" type="Nursery">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="leader" column="leader"/>
+        <result property="acronym" column="acronym"/>
+        <result property="createTime" column="create_time"/>
+        <result property="associationId" column="association_id"/>
+    </resultMap>
+
+    <resultMap id="nurseryWithAssociation" type="NurseryWithAssociation">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="leader" column="leader"/>
+        <result property="acronym" column="acronym"/>
+        <result property="createTime" column="create_time"/>
+        <result property="associationId" column="association_id"/>
+        <association property="association" javaType="Association" resultMap="com.waein.safety.repository.NurseryRepository.association" columnPrefix="association_"/>
+    </resultMap>
+
+    <insert id="insertNursery" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+          nursery (association_id, name, leader, acronym, create_time)
+        VALUES
+          (#{associationId}, #{name}, #{leader}, #{acronym}, #{createTime})
+    </insert>
+
+    <update id="updateNurseryOnNameById">
+        UPDATE
+          nursery
+        SET
+          name = #{name}
+        WHERE
+          id = #{id}
+    </update>
+
+    <delete id="deleteNurseryById">
+        DELETE FROM
+          nursery
+        WHERE
+          id = #{id}
+    </delete>
+
+    <select id="selectNurseryById" resultMap="nursery">
+        SELECT
+          *
+        FROM
+          nursery
+        WHERE
+          id = #{id}
+    </select>
+
+    <select id="selectNurseryByLeader" resultMap="nursery">
+        SELECT
+          *
+        FROM
+          nursery
+        WHERE
+          leader = #{leader}
+    </select>
+
+    <select id="selectAllNurserys" resultMap="nursery">
+        SELECT
+          *
+        FROM
+          nursery
+    </select>
+
+    <select id="selectNurserysByPage" resultMap="nursery">
+        SELECT
+          *
+        FROM
+          nursery
+        LIMIT #{offset}, #{perPage}
+    </select>
+
+    <select id="selectNurseryWithAssociationById" resultMap="nurseryWithAssociation">
+        SELECT
+          nursery.*,
+          association.id AS association_id,
+          association.name AS association_name,
+          association.address AS association_address
+        FROM
+          nursery
+        LEFT JOIN
+          association ON nursery.association_id = association.id
+        WHERE
+          id = #{id}
+    </select>
+
+    <select id="selectCount" resultType="integer">
+        SELECT
+          COUNT(*)
+        FROM
+          nursery
+    </select>
+
+</mapper>

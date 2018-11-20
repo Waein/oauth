@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.waein.safety.repository.AssociationRepository">
+
+    <resultMap id="association" type="Association">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <resultMap id="associationWithNurserys" type="AssociationWithNurserys">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <collection property="nurseries" ofType="Nursery" resultMap="com.waein.safety.repository.NurseryRepository.nursery" columnPrefix="nursery_"/>
+    </resultMap>
+
+    <select id="selectAssociationById" resultMap="association">
+        SELECT
+          *
+        FROM
+         association
+        WHERE
+          id = #{id}
+    </select>
+
+    <select id="selectAllAssociations" resultMap="association">
+        SELECT
+          *
+        FROM
+         association
+    </select>
+
+    <select id="selectAssociationWithNurserysById" resultMap="associationWithNurserys">
+        SELECT
+          association.*,
+          nursery.id AS nursery_id,
+          nursery.name AS nursery_name,
+          nursery.leader AS nursery_leader,
+          nursery.acronym AS nursery_acronym,
+          nursery.create_time as nursery_create_time
+        FROM
+          association
+        LEFT JOIN
+          nursery ON association.id = nursery.association_id
+        WHERE
+          id = #{id}
+    </select>
+
+</mapper>

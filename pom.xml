@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.shawn</groupId>
-    <artifactId>SpringBoot-MyBatis</artifactId>
+    <groupId>com.waein</groupId>
+    <artifactId>safety-nursery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <!-- Metadata of the project -->
-    <name>SpringBoot-MyBatis</name>
-    <description>A back-end RESTful framework, integrated by Spring Boot and MyBatis</description>
+    <name>safety-nursery</name>
+    <description>A back-end RESTful framework, integrated by Spring Boot and MyBatis, With oauth2 security</description>
 
     <!-- Inherit defaults from Spring Boot -->
     <parent>
